@@ -18,7 +18,7 @@ def serialize_time(time):
 def serialzie_train_stations(train_stations):
     html = "<div style=\"margin-top:16px\">\n"
     for t in train_stations:
-        html += "<p>" + t[0].name + "</p>\n"
+        html += "<p><b>" + t[0].line + "</b> | " + t[0].stop + "</p>\n"
     html += "</div>\n"
     return html
 

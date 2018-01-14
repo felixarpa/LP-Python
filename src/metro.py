@@ -9,6 +9,8 @@ class Metro:
 
         def name(self, name):
             self.obj.name = name
+            self.obj.line = name[7:][:2]
+            self.obj.stop = name[13:][:-1]
             return self
 
         def lat(self, lat):
