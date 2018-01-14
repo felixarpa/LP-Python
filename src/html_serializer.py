@@ -1,7 +1,7 @@
 import datetime
 
 def serialize_acte(acte):
-    html = "<h2>" + acte.name + "</h2>"
+    html = "<h2>" + acte.name + "</h2>\n"
     html += serialize_address(acte.address)
     html += serialize_time(acte.date.strftime("%d/%m/%Y %H.%M"))
     html += serialzie_train_stations(acte.train_stations)
@@ -10,16 +10,16 @@ def serialize_acte(acte):
 def serialize_address(address):
     return "<p><em>" + address.name + "</em>: " + address.street + ", " \
             + address.number + ", " + address.zip_code + ", " \
-            + address.district + ", " + address.city + "</p>"
+            + address.district + ", " + address.city + "</p>\n"
 
 def serialize_time(time):
-    return "<p style=\"font-size:12px;color:#444\"><b>" + time + "</b></p>"
+    return "<p style=\"font-size:12px;color:#444\"><b>" + time + "</b></p>\n"
 
 def serialzie_train_stations(train_stations):
-    html = "<div style=\"margin-top:16px\">"
+    html = "<div style=\"margin-top:16px\">\n"
     for t in train_stations:
-        html += "<p>" + t[0].name + "</p>"
-    html += "</div>"
+        html += "<p>" + t[0].name + "</p>\n"
+    html += "</div>\n"
     return html
 
 def serialize_actes(actes):
@@ -48,8 +48,9 @@ def write_html(actes):
     <body>
     <div></div>
     <div style=\"margin-left:128px\"><a href="https://github.com/felixarpa/LP-Python/"><h1>Pràctica 3 de Llenguatges de Programació: Python</h1></a></div>
-    <div></div>
-""")
+    <div></div>""")
     file.write(serialize_actes(actes))
-    file.write("""</body></html>""")
+    file.write("""
+    </body>
+</html>""")
 

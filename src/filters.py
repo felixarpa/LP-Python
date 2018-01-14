@@ -23,8 +23,9 @@ def filter_by_date(expr, acte):
         max_date = date + datetime.timedelta(days = expr[2])
         return acte.date <= max_date and acte.date >= min_date
     elif isinstance(expr, str):
-        date = datetime.datetime.strptime(expr, "%d/%m/%Y")
-        return acte.date == date
+        min_date = datetime.datetime.strptime(expr + " 00.00", "%d/%m/%Y %H.%M")
+        max_date = datetime.datetime.strptime(expr + " 23.59", "%d/%m/%Y %H.%M")
+        return acte.date <= max_date and acte.date >= min_date
 
 def filter_by_metro(expr, metro):
     if isinstance(expr, type(None)):

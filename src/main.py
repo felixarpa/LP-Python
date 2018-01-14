@@ -18,6 +18,10 @@ parser.add_argument("--metro")
 args = parser.parse_args()
 
 def eval_dates(expr, pos):
+    if len(expr) == 10:                         # és només un valor
+        expr.insert(0, '\"')
+        expr.insert(11, '\"')
+        return ''.join(expr)
     if pos >= len(expr):
         return ''.join(expr)
     if expr[pos] == '[' or expr[pos] == '(':    # [dd/mm/YYYY,...]
@@ -28,6 +32,10 @@ def eval_dates(expr, pos):
         return eval_dates(expr, pos + 1)
 
 def eval_metro(expr, pos):
+    if len(expr) == 2:
+        expr.insert(0, '\"')
+        expr.insert(3, '\"')
+        return ''.join(expr)
     if pos >= len(expr):
         return ''.join(expr)
     if expr[pos] == '[' or expr[pos] == ',':
